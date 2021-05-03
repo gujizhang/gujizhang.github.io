@@ -5,19 +5,6 @@
     
     <entry>
       <title>git低层命令</title>
-      <link href="2021/05/03/03_Git(%E9%AB%98%E5%B1%82%E5%91%BD%E4%BB%A4)/"/>
-      <url>2021/05/03/03_Git(%E9%AB%98%E5%B1%82%E5%91%BD%E4%BB%A4)/</url>
-      
-        <content type="html"><![CDATA[<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><pre><code>git --version</code></pre><h3 id="初始化配置"><a href="#初始化配置" class="headerlink" title="初始化配置"></a>初始化配置</h3><pre><code>git config --global user.name &quot;damu&quot;git config --global user.email damu@example.com    git config --list</code></pre><h3 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h3><pre><code>git init</code></pre><h3 id="C-新增"><a href="#C-新增" class="headerlink" title="C(新增)"></a>C(新增)</h3><pre><code>在工作目录中新增文件git statusgit add ./git commit -m &quot;msg&quot;    </code></pre><h3 id="U-修改"><a href="#U-修改" class="headerlink" title="U(修改)"></a>U(修改)</h3><pre><code>在工作目录中修改文件git statusgit add ./git commit -m &quot;msg&quot;     </code></pre><h3 id="D-删除-amp-重命名"><a href="#D-删除-amp-重命名" class="headerlink" title="D(删除 &amp; 重命名)"></a>D(删除 &amp; 重命名)</h3><p>   git rm 要删除的文件     git mv 老文件 新文件<br>   git  status             git  status<br>   git commit -m “msg”     git commit -m “msg”</p><h3 id="R-查询"><a href="#R-查询" class="headerlink" title="R(查询)"></a>R(查询)</h3><p>   git  status   :  查看工作目录中文件的状态(已跟踪(已提交 已暂存 已修改) 未跟踪)<br>   git  diff     :  查看未暂存的修改<br>   git  diff –cache : 查看未提交的暂存<br>   git  log –oneline : 查看提交记录</p><h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><pre><code>分支的本质其实就是一个提交对象!!!HEAD:     是一个指针 它默认指向master分支 切换分支时其实就是让HEAD指向不同的分支    每次有新的提交时 HEAD都会带着当前指向的分支 一起往前移动git  log --oneline --decorate --graph --all : 查看整个项目的分支图  git branch : 查看分支列表git branch -v: 查看分支指向的最新的提交git branch name : 在当前提交对象上创建新的分支git branch name commithash: 在指定的提交对象上创建新的分支git checkout name :     切换分支git branch -d name : 删除空的分支 删除已经被合并的分支git branch -D name : 强制删除分支      </code></pre>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>git低层命令</title>
       <link href="2021/05/03/04_Git%E6%9D%80%E6%89%8B%E9%94%8F(%E5%88%86%E6%94%AF)/"/>
       <url>2021/05/03/04_Git%E6%9D%80%E6%89%8B%E9%94%8F(%E5%88%86%E6%94%AF)/</url>
       
@@ -31,10 +18,10 @@
     
     <entry>
       <title>git低层命令</title>
-      <link href="2021/05/03/05_eslint/"/>
-      <url>2021/05/03/05_eslint/</url>
+      <link href="2021/05/03/03_Git(%E9%AB%98%E5%B1%82%E5%91%BD%E4%BB%A4)/"/>
+      <url>2021/05/03/03_Git(%E9%AB%98%E5%B1%82%E5%91%BD%E4%BB%A4)/</url>
       
-        <content type="html"><![CDATA[<h3 id="eslint"><a href="#eslint" class="headerlink" title="eslint"></a>eslint</h3><pre><code>js代码的检查工具下载: npm i eslint -D使用:    生成配置文件 npx eslint --init    检查js文件   npx eslint 目录名    命中的规则:        字符串必须使用单引号        语句结尾不能有分号        文件的最后必须要有换行        </code></pre><h3 id="eslint结合git"><a href="#eslint结合git" class="headerlink" title="eslint结合git"></a>eslint结合git</h3><pre><code>husky: 哈士奇, 为Git仓库设置钩子程序使用    在仓库初始化完毕之后 再去安装哈士奇    在package.json文件写配置        &quot;husky&quot;: &#123;            &quot;hooks&quot;: &#123;              &quot;pre-commit&quot;: &quot;npm run lint&quot;                 //在git commit之前一定要通过npm run lint的检查              // 只有npm run lint不报错时 commit才能真正的运行            &#125;          &#125;           </code></pre>]]></content>
+        <content type="html"><![CDATA[<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><pre><code>git --version</code></pre><h3 id="初始化配置"><a href="#初始化配置" class="headerlink" title="初始化配置"></a>初始化配置</h3><pre><code>git config --global user.name &quot;damu&quot;git config --global user.email damu@example.com    git config --list</code></pre><h3 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h3><pre><code>git init</code></pre><h3 id="C-新增"><a href="#C-新增" class="headerlink" title="C(新增)"></a>C(新增)</h3><pre><code>在工作目录中新增文件git statusgit add ./git commit -m &quot;msg&quot;    </code></pre><h3 id="U-修改"><a href="#U-修改" class="headerlink" title="U(修改)"></a>U(修改)</h3><pre><code>在工作目录中修改文件git statusgit add ./git commit -m &quot;msg&quot;     </code></pre><h3 id="D-删除-amp-重命名"><a href="#D-删除-amp-重命名" class="headerlink" title="D(删除 &amp; 重命名)"></a>D(删除 &amp; 重命名)</h3><p>   git rm 要删除的文件     git mv 老文件 新文件<br>   git  status             git  status<br>   git commit -m “msg”     git commit -m “msg”</p><h3 id="R-查询"><a href="#R-查询" class="headerlink" title="R(查询)"></a>R(查询)</h3><p>   git  status   :  查看工作目录中文件的状态(已跟踪(已提交 已暂存 已修改) 未跟踪)<br>   git  diff     :  查看未暂存的修改<br>   git  diff –cache : 查看未提交的暂存<br>   git  log –oneline : 查看提交记录</p><h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><pre><code>分支的本质其实就是一个提交对象!!!HEAD:     是一个指针 它默认指向master分支 切换分支时其实就是让HEAD指向不同的分支    每次有新的提交时 HEAD都会带着当前指向的分支 一起往前移动git  log --oneline --decorate --graph --all : 查看整个项目的分支图  git branch : 查看分支列表git branch -v: 查看分支指向的最新的提交git branch name : 在当前提交对象上创建新的分支git branch name commithash: 在指定的提交对象上创建新的分支git checkout name :     切换分支git branch -d name : 删除空的分支 删除已经被合并的分支git branch -D name : 强制删除分支      </code></pre>]]></content>
       
       
       
@@ -48,6 +35,19 @@
       <url>2021/05/03/06_%E8%BF%9C%E7%A8%8B%E5%8D%8F%E4%BD%9C/</url>
       
         <content type="html"><![CDATA[<h3 id="三个必须懂得概念"><a href="#三个必须懂得概念" class="headerlink" title="三个必须懂得概念"></a>三个必须懂得概念</h3><pre><code>本地分支远程跟踪分支(remote/分支名)远程分支</code></pre><h3 id="远程协作的基本流程"><a href="#远程协作的基本流程" class="headerlink" title="远程协作的基本流程"></a>远程协作的基本流程</h3><pre><code>第一步: 项目经理创建一个空的远程仓库第二步: 项目经理创建一个待推送的本地仓库第三步: 为远程仓库配别名  配完用户名 邮箱第四步: 在本地仓库中初始化代码 提交代码第五步: 推送第六步: 邀请成员第七步: 成员克隆远程仓库第八步: 成员做出修改第九步: 成员推送自己的修改第十步: 项目经理拉取成员的修改</code></pre><h3 id="做跟踪"><a href="#做跟踪" class="headerlink" title="做跟踪"></a>做跟踪</h3><pre><code>克隆才仓库时 会自动为master做跟踪本地没有分支    git checkout --track 远程跟踪分支(remote/分支名)本地已经创建了分支    git branch -u 远程跟踪分支(remote/分支名)</code></pre><h3 id="推送"><a href="#推送" class="headerlink" title="推送"></a>推送</h3><pre><code>git push</code></pre><h3 id="拉取"><a href="#拉取" class="headerlink" title="拉取"></a>拉取</h3><pre><code>git pull</code></pre><h3 id="pull-request"><a href="#pull-request" class="headerlink" title="pull request"></a>pull request</h3><pre><code>让第三方人员参与到项目中 fork</code></pre><h3 id="使用频率最高的五个命令"><a href="#使用频率最高的五个命令" class="headerlink" title="使用频率最高的五个命令"></a>使用频率最高的五个命令</h3><pre><code>git statusgit addgit commitgit pushgit pull</code></pre>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>git低层命令</title>
+      <link href="2021/05/03/05_eslint/"/>
+      <url>2021/05/03/05_eslint/</url>
+      
+        <content type="html"><![CDATA[<h3 id="eslint"><a href="#eslint" class="headerlink" title="eslint"></a>eslint</h3><pre><code>js代码的检查工具下载: npm i eslint -D使用:    生成配置文件 npx eslint --init    检查js文件   npx eslint 目录名    命中的规则:        字符串必须使用单引号        语句结尾不能有分号        文件的最后必须要有换行        </code></pre><h3 id="eslint结合git"><a href="#eslint结合git" class="headerlink" title="eslint结合git"></a>eslint结合git</h3><pre><code>husky: 哈士奇, 为Git仓库设置钩子程序使用    在仓库初始化完毕之后 再去安装哈士奇    在package.json文件写配置        &quot;husky&quot;: &#123;            &quot;hooks&quot;: &#123;              &quot;pre-commit&quot;: &quot;npm run lint&quot;                 //在git commit之前一定要通过npm run lint的检查              // 只有npm run lint不报错时 commit才能真正的运行            &#125;          &#125;           </code></pre>]]></content>
       
       
       
