@@ -4,6 +4,84 @@
   
     
     <entry>
+      <title></title>
+      <link href="2021/05/03/04_Git%E6%9D%80%E6%89%8B%E9%94%8F(%E5%88%86%E6%94%AF)/"/>
+      <url>2021/05/03/04_Git%E6%9D%80%E6%89%8B%E9%94%8F(%E5%88%86%E6%94%AF)/</url>
+      
+        <content type="html"><![CDATA[<h3 id="git分支本质"><a href="#git分支本质" class="headerlink" title="git分支本质"></a>git分支本质</h3><pre><code>分支本质是一个提交对象,所有的分支都会有机会被HEAD所引用(HEAD一个时刻只会指向一个分支)当我们有新的提交的时候 HEAD会携带当前持有的分支往前移动</code></pre><h3 id="git分支命令"><a href="#git分支命令" class="headerlink" title="git分支命令"></a>git分支命令</h3><pre><code>创建分支            : git branch branchname切换分支           : git checkout  branchname创建&amp;切换分支     : git checkout -b branchname版本穿梭(时光机) :  git branch branchname commitHash  普通删除分支      : git  branch -d branchname强制删除分支      : git  branch -D branchname合并分支         : git merge branchname    快进合并 --&gt; 不会产生冲突    典型合并 --&gt; 有机会产生冲突    解决冲突 --&gt; 打开冲突的文件 进行修改 add commit   查看分支列表 : git branch查看合并到当前分支的分支列表: git branch --merged    一旦出现在这个列表中 就应该删除查看没有合并到当前分支的分支列表: git branch --no-merged    一旦出现在这个列表中 就应该观察一下是否需要合并    </code></pre><h3 id="git分支的注意点"><a href="#git分支的注意点" class="headerlink" title="git分支的注意点"></a>git分支的注意点</h3><pre><code>在切换的时候 一定要保证当前分支是干净的!!!    允许切换分支:         分支上所有的内容处于 已提交状态            (避免)分支上的内容是初始化创建 处于未跟踪状态        (避免)分支上的内容是初始化创建 第一次处于已暂存状态    不允许切分支:         分支上所有的内容处于 已修改状态  或 第二次以后的已暂存状态           在分支上的工作做到一半时 如果有切换分支的需求, 我们应该将现有的工作存储起来    git stash : 会将当前分支上的工作推到一个栈中    分支切换  进行其他工作 完成其他工作后 切回原分支    git stash apply : 将栈顶的工作内容还原 但不让任何内容出栈     git stash drop  : 取出栈顶的工作内容后 就应该将其删除(出栈)    git stash pop   :      git stash apply +  git stash drop     git stash list : 查看存储    </code></pre><h3 id="后悔药"><a href="#后悔药" class="headerlink" title="后悔药"></a>后悔药</h3><pre><code>撤销工作目录的修改   :  git checkout -- filename撤销暂存区的修改     :  git reset HEAD  filename撤销提交             :  git commit --amend</code></pre><h3 id="reset三部曲"><a href="#reset三部曲" class="headerlink" title="reset三部曲"></a>reset三部曲</h3><pre><code>git reset --soft commithash    ---&gt; 用commithash的内容重置HEAD内容git reset [--mixed] commithash ---&gt; 用commithash的内容重置HEAD内容 重置暂存区git reset --hard commithash    ---&gt; 用commithash的内容重置HEAD内容 重置暂存区 重置工作目录</code></pre><h3 id="路径reset"><a href="#路径reset" class="headerlink" title="路径reset"></a>路径reset</h3><pre><code>所有的路径reset都要省略第一步!!!    第一步是重置HEAD内容  我们知道HEAD本质指向一个分支 分支的本质是一个提交对象     提交对象 指向一个树对象 树对象又很有可能指向多个git对象 一个git对象代表一个文件!!!    HEAD可以代表一系列文件的状态!!!!git reset [--mixed] commithash filename       用commithash中filename的内容重置暂存区     </code></pre><h3 id="checkout深入理解"><a href="#checkout深入理解" class="headerlink" title="checkout深入理解"></a>checkout深入理解</h3><pre><code>git   checkout brancname  跟   git reset --hard commithash特别像    共同点        都需要重置 HEAD   暂存区   工作目录    区别         checkout对工作目录是安全的    reset --hard是强制覆盖         checkout动HEAD时不会带着分支走而是切换分支         reset --hard时是带着分支走         checkout + 路径      git checkout commithash  filename              重置暂存区           重置工作目录      git checkout -- filename            重置工作目录                   </code></pre>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="2021/05/03/03_Git(%E9%AB%98%E5%B1%82%E5%91%BD%E4%BB%A4)/"/>
+      <url>2021/05/03/03_Git(%E9%AB%98%E5%B1%82%E5%91%BD%E4%BB%A4)/</url>
+      
+        <content type="html"><![CDATA[<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><pre><code>git --version</code></pre><h3 id="初始化配置"><a href="#初始化配置" class="headerlink" title="初始化配置"></a>初始化配置</h3><pre><code>git config --global user.name &quot;damu&quot;git config --global user.email damu@example.com    git config --list</code></pre><h3 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h3><pre><code>git init</code></pre><h3 id="C-新增"><a href="#C-新增" class="headerlink" title="C(新增)"></a>C(新增)</h3><pre><code>在工作目录中新增文件git statusgit add ./git commit -m &quot;msg&quot;    </code></pre><h3 id="U-修改"><a href="#U-修改" class="headerlink" title="U(修改)"></a>U(修改)</h3><pre><code>在工作目录中修改文件git statusgit add ./git commit -m &quot;msg&quot;     </code></pre><h3 id="D-删除-amp-重命名"><a href="#D-删除-amp-重命名" class="headerlink" title="D(删除 &amp; 重命名)"></a>D(删除 &amp; 重命名)</h3><p>   git rm 要删除的文件     git mv 老文件 新文件<br>   git  status             git  status<br>   git commit -m “msg”     git commit -m “msg”</p><h3 id="R-查询"><a href="#R-查询" class="headerlink" title="R(查询)"></a>R(查询)</h3><p>   git  status   :  查看工作目录中文件的状态(已跟踪(已提交 已暂存 已修改) 未跟踪)<br>   git  diff     :  查看未暂存的修改<br>   git  diff –cache : 查看未提交的暂存<br>   git  log –oneline : 查看提交记录</p><h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><pre><code>分支的本质其实就是一个提交对象!!!HEAD:     是一个指针 它默认指向master分支 切换分支时其实就是让HEAD指向不同的分支    每次有新的提交时 HEAD都会带着当前指向的分支 一起往前移动git  log --oneline --decorate --graph --all : 查看整个项目的分支图  git branch : 查看分支列表git branch -v: 查看分支指向的最新的提交git branch name : 在当前提交对象上创建新的分支git branch name commithash: 在指定的提交对象上创建新的分支git checkout name :     切换分支git branch -d name : 删除空的分支 删除已经被合并的分支git branch -D name : 强制删除分支      </code></pre>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="2021/05/03/02_Git(%E4%BD%8E%E5%B1%82%E5%91%BD%E4%BB%A4)/"/>
+      <url>2021/05/03/02_Git(%E4%BD%8E%E5%B1%82%E5%91%BD%E4%BB%A4)/</url>
+      
+        <content type="html"><![CDATA[<h3 id="底层命令"><a href="#底层命令" class="headerlink" title="底层命令"></a>底层命令</h3><pre><code>git对象    git hash-object -w fileUrl : 生成一个key(hash值):val(压缩后的文件内容)键值对存到.git/objectstree对象    git update-index --add --cacheinfo 100644 hash test.txt : 往暂存区添加一条记录(让git对象 对应 上文件名)存到.git/index    git write-tree : 生成树对象存到.git/objectscommit对象    echo &#39;first commit&#39; | git commit-tree treehash : 生成一个提交对象存到.git/objects对以上对象的查询    git cat-file -p hash       : 拿对应对象的内容    git cat-file -t hash       : 拿对应对象的类型    </code></pre><h3 id="查看暂存区"><a href="#查看暂存区" class="headerlink" title="查看暂存区"></a>查看暂存区</h3><pre><code>git ls-files -s                </code></pre>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="2021/05/03/01_%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"/>
+      <url>2021/05/03/01_%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/</url>
+      
+        <content type="html"><![CDATA[<h3 id="集中式-svn"><a href="#集中式-svn" class="headerlink" title="集中式(svn)"></a>集中式(svn)</h3><pre><code>svn因为每次存的都是差异 需要的硬盘空间会相对的小一点  可是回滚的速度会很慢优点:     代码存放在单一的服务器上 便于项目的管理缺点:     服务器宕机: 员工写的代码得不到保障    服务器炸了: 整个项目的历史记录都会丢失    </code></pre><h3 id="分布式-git"><a href="#分布式-git" class="headerlink" title="分布式(git)"></a>分布式(git)</h3><pre><code>git每次存的都是项目的完整快照 需要的硬盘空间会相对大一点    (Git团队对代码做了极致的压缩 最终需要的实际空间比svn多不了太多 可是Git的回滚速度极快)优点:    完全的分布式缺点:        学习起来比SVN陡峭</code></pre>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="2021/05/03/06_%E8%BF%9C%E7%A8%8B%E5%8D%8F%E4%BD%9C/"/>
+      <url>2021/05/03/06_%E8%BF%9C%E7%A8%8B%E5%8D%8F%E4%BD%9C/</url>
+      
+        <content type="html"><![CDATA[<h3 id="三个必须懂得概念"><a href="#三个必须懂得概念" class="headerlink" title="三个必须懂得概念"></a>三个必须懂得概念</h3><pre><code>本地分支远程跟踪分支(remote/分支名)远程分支</code></pre><h3 id="远程协作的基本流程"><a href="#远程协作的基本流程" class="headerlink" title="远程协作的基本流程"></a>远程协作的基本流程</h3><pre><code>第一步: 项目经理创建一个空的远程仓库第二步: 项目经理创建一个待推送的本地仓库第三步: 为远程仓库配别名  配完用户名 邮箱第四步: 在本地仓库中初始化代码 提交代码第五步: 推送第六步: 邀请成员第七步: 成员克隆远程仓库第八步: 成员做出修改第九步: 成员推送自己的修改第十步: 项目经理拉取成员的修改</code></pre><h3 id="做跟踪"><a href="#做跟踪" class="headerlink" title="做跟踪"></a>做跟踪</h3><pre><code>克隆才仓库时 会自动为master做跟踪本地没有分支    git checkout --track 远程跟踪分支(remote/分支名)本地已经创建了分支    git branch -u 远程跟踪分支(remote/分支名)</code></pre><h3 id="推送"><a href="#推送" class="headerlink" title="推送"></a>推送</h3><pre><code>git push</code></pre><h3 id="拉取"><a href="#拉取" class="headerlink" title="拉取"></a>拉取</h3><pre><code>git pull</code></pre><h3 id="pull-request"><a href="#pull-request" class="headerlink" title="pull request"></a>pull request</h3><pre><code>让第三方人员参与到项目中 fork</code></pre><h3 id="使用频率最高的五个命令"><a href="#使用频率最高的五个命令" class="headerlink" title="使用频率最高的五个命令"></a>使用频率最高的五个命令</h3><pre><code>git statusgit addgit commitgit pushgit pull</code></pre>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="2021/05/03/05_eslint/"/>
+      <url>2021/05/03/05_eslint/</url>
+      
+        <content type="html"><![CDATA[<h3 id="eslint"><a href="#eslint" class="headerlink" title="eslint"></a>eslint</h3><pre><code>js代码的检查工具下载: npm i eslint -D使用:    生成配置文件 npx eslint --init    检查js文件   npx eslint 目录名    命中的规则:        字符串必须使用单引号        语句结尾不能有分号        文件的最后必须要有换行        </code></pre><h3 id="eslint结合git"><a href="#eslint结合git" class="headerlink" title="eslint结合git"></a>eslint结合git</h3><pre><code>husky: 哈士奇, 为Git仓库设置钩子程序使用    在仓库初始化完毕之后 再去安装哈士奇    在package.json文件写配置        &quot;husky&quot;: &#123;            &quot;hooks&quot;: &#123;              &quot;pre-commit&quot;: &quot;npm run lint&quot;                 //在git commit之前一定要通过npm run lint的检查              // 只有npm run lint不报错时 commit才能真正的运行            &#125;          &#125;           </code></pre>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hello World</title>
       <link href="2021/05/02/hello-world/"/>
       <url>2021/05/02/hello-world/</url>
